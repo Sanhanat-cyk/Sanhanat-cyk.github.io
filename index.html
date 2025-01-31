@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="th">
+    <meta name="description" content="Portfolio ของนายสัณหณัฐ ไฉยากุล นักพัฒนาซอฟต์แวร์ที่มีความเชี่ยวชาญใน HTML, CSS, JavaScript, PHP, React Native, และ WordPress">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/expand.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+
+<body>
+    <header>
+        <div class="container" >
+
+            <nav>
+                <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+                <ul class="nav-links">
+                    <div class="menu-logo">
+                        <img src="img/722731.webp" alt="" width="10%">
+                    </div>
+                    <div class="menu-center">
+                        <li><a href="#about" id="about-link">เกี่ยวกับฉัน</a></li>
+                        <li><a href="#projects" id="projects-link">โปรเจคต์</a></li>
+                        <li><a href="#skills" id="skills-link">ทักษะ</a></li>
+                        <li><a href="#contact" id="contact-link">ติดต่อ</a></li>
+                    </div>
+                    <div class="menu-setting">
+                        <h4>ตั้งค่า</h4>
+                        <div class="language-switcher">
+
+                            <button id="lang-th">TH</button>
+                            <p> | </p>
+                            <button id="lang-en">EN</button>
+                        </div>
+
+
+                        <!-- <div class="theme-switcher">
+                            <button id="theme-toggle">โหมดกลางคืน</button>
+                        </div>
+                    -->
+                        <label class="theme-toggle" title="Toggle theme">
+                            <input type="checkbox" id="theme-toggle" />
+                            <span class="theme-toggle-sr">Toggle theme</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="2em" height="2em"
+                                fill="currentColor" class="theme-toggle__expand" viewBox="0 0 32 32">
+                                <clipPath id="theme-toggle__expand__cutout">
+                                    <path d="M0-11h25a1 1 0 0017 13v30H0Z" />
+                                </clipPath>
+                                <g clip-path="url(#theme-toggle__expand__cutout)">
+                                    <circle cx="16" cy="16" r="8.4" />
+                                    <path
+                                        d="M18.3 3.2c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3S14.7.9 16 .9s2.3 1 2.3 2.3zm-4.6 25.6c0-1.3 1-2.3 2.3-2.3s2.3 1 2.3 2.3-1 2.3-2.3 2.3-2.3-1-2.3-2.3zm15.1-10.5c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zM3.2 13.7c1.3 0 2.3 1 2.3 2.3s-1 2.3-2.3 2.3S.9 17.3.9 16s1-2.3 2.3-2.3zm5.8-7C9 7.9 7.9 9 6.7 9S4.4 8 4.4 6.7s1-2.3 2.3-2.3S9 5.4 9 6.7zm16.3 21c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm2.4-21c0 1.3-1 2.3-2.3 2.3S23 7.9 23 6.7s1-2.3 2.3-2.3 2.4 1 2.4 2.3zM6.7 23C8 23 9 24 9 25.3s-1 2.3-2.3 2.3-2.3-1-2.3-2.3 1-2.3 2.3-2.3z" />
+                                </g>
+                            </svg>
+                        </label>
+
+                    </div>
+                </ul>
+
+            </nav>
+
+        </div>
+    </header>
+    
+    <section id="about" class="section">
+        <div class="container">
+            <section id="left">
+                <div class="hello"><p>สวัสดีครับผมชื่อ</p> </div>
+                <div class="name"><h1>นายสัณหณัฐ ไฉยากุล</h1></div>
+                <div class="description"><h2>ผมกำลังมองหางานตำแหน่งโปรแกรมเมอร์ </h2></div>
+                <div class="skill">                
+                    <i class="fa-brands fa-html5" style="color: #f06529; font-size:2rem; padding-right: 1rem; ;"></i>
+                    <i class="fa-brands fa-css3-alt" style="color: #2965f1; font-size:2rem; padding-right: 1rem; ;"></i>
+                    <i class="fa-brands fa-js"style="color: #f0db4f; font-size:2rem; padding-right: 1rem; ;"></i>
+                    <i class="fa-brands fa-php"style="color: #787CB5; font-size:2rem; padding-right: 1rem; ;"></i>
+                    <i class="fa-brands fa-java"style="color: #f89820; font-size:2rem; padding-right: 1rem; ;"></i>
+                    <i class="fa-solid fa-database"style="color: #f29111; font-size:2rem; padding-right: 1rem; ;"></i>
+                    <i class="fa-brands fa-react"style="color: #61DBFB; font-size:2rem; padding-right: 1rem; ;"></i>
+                    <i class="fa-brands fa-wordpress"style="color: #00749C; font-size:2rem; padding-right: 1rem; ;"></i>                  
+                </div>
+            </section>
+            <section id="rigth">
+             <!-- <h2 id="about-title">เกี่ยวกับฉัน</h2>  -->
+                <img src="img/LINE_ALBUM_26767 _3_250130_6sq.jpg" alt="สัณหณัฐ ไฉยากุล" />
+            </section>
+
+
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="containers">
+            <section id="education" class="section">
+
+                <div class="container">
+                    <div class="nametag">
+                    <i class="fa-solid fa-school"></i>
+                    <h2>การศึกษา</h2>
+                </div>
+                    <div class="project-grid">
+                        <div class="project-item">
+                            <div class="img"><img src="img/85968923be234367ecbc51cbba52726e.png" alt="" style="border-radius: 20%; height: 100px; margin-right: 2rem;"></div>
+                            <div class="data" id="suranaree">
+                                <p>2019-2023</p>
+                                <h3>มหาวิทยาลัยเทคโนโลยีสรุนรารี</h3>
+                                <p id="bachelor">ซอฟต์แวร์วิสาหกิจ</p>
+                            </div>
+
+                        </div>
+                        <div class="project-item">
+                            <div class="img"><img src="img/cropped-logo-blm.png" alt="" style="border-radius: 20%; height: 100px; margin-right: 2rem; background-color: #fff;"></div>
+                            <div class="data" id="banglamung">
+                            <p>2016-2018</p>
+                            <h3>โรงเรียนบางละมุง</h3>
+                            <p id="plan">วิทย์-คณิต</p>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="img"><img src="img/471445303_1029708375627683_3348678102805268652_n.jpg" alt="" style="border-radius: 20%; height: 100px; margin-right: 2rem;"></div>
+                            <div class="data" id="PattayaCity5School">
+                            <p>2010-2016</p>
+                            <h3>โรงเรียนเมืองพัทยา 5</h3>        
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="img"><img src="img/images.png" alt="" style="border-radius: 20%; height: 100px; margin-right: 2rem;"></div>
+                            <div class="data" id="AksornPattayaSchool">
+                            <p>2005-2009</p>
+                            <h3>โรงเรียนอักษรพัทยา</h3>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="work-experience" class="section">
+
+                <div class="container">
+                    <div class="nametag">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <h2>ประวัติการทำงาน</h2>
+                </div>
+                    <div class="project-grid">
+                        <div class="project-item">
+                            <div class="img"><img src="img/21396_logo_201909200908.png" alt="" style="border-radius: 20%; height: 100px; margin-right: 2rem;"></div>
+                            <div class="data" id="KFC">
+                            <p>JUL 2024- JAN 2025</p>
+                            <h3>QSA KFC</h3>
+                            <p id="description">All Star ประจำสเตชั้น Cook และ Supplier</p>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="img"><img src="img/army21.jpg" alt="" style="border-radius: 20%; height: 100px; margin-right: 2rem;"></div>
+                            <div class="data" id="army">
+                            <p>Sep2023-Sep2024</p>
+                            <h3>กองพันทหารปืนใหญที่21 กรมทหารปีนใหญ่ที่ 2 รักษาพระองค์</h3>
+                            <p id="description" >พลทหารกองประจำการ</p>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="img"><img src="img/blue.png" alt="" style="border-radius: 20%; height: 100px; width: 100px; margin-right: 2rem; background-color: #fff;"></div>
+                            <div class="data" id="rukcom">
+                            <p>Sep2023-Sep2024</p>
+                            <h3>รักคอม จำกัด</h3>
+                            <p id="description" >เป็นการฝึกงานที่มีการทำเรื่องของ Theme สำหรับ WP และเรื่องที่เกียวข้อง</p>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="img"><img src="img/freelancer.jpg" alt="" style="border-radius: 20%; height: 100px; width: 100px; margin-right: 2rem;"></div>
+                            <div class="data" id="freelancer">
+                            <p>เมษา 2021- มีนา 2022</p>
+                            <h3>ฟรีแลนซ์</h3>
+                            <p id="description">รับเขียนเว็บตามที่ลูกค้าออกแบบพร้อมจดโดเมน</p>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="img"><img src="img/u2t-logo.png" alt="" style="border-radius: 20%; height: 100px; width: 100px; margin-right: 2rem; background-color: #fff;"></div>
+                            <div class="data" id="u2t">
+                            <p>มกรา 2021- ธันวา 2021</p>
+                            <h3>โครงการ U2T</h3>
+                            <p id="description" >เป็นส่วนนึงในการเว็บรวบรวมข้อมูลต่างในพื้นที่เพื่อต่อยอดเป็นการช่วยดหลือชุมชลต่อไป</p>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="img"><img src="img/breaker-logo.jpg" alt="" style="border-radius: 20%; height: 100px; margin-right: 2rem;"></div>
+                            <div class="data" id="scs">
+                            <p>มีนา 2015- พฤษ 2015</p>
+                            <h3>scs Breaker</h3>
+                            <p id="description" >เป็นงานขายประจำอยู่ที่ bigC extra พัทยากลาง</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>โปรเจคต์</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <h3>โปรเจคต์ 1</h3>
+                    <p>รายละเอียดของโปรเจคต์ 1</p>
+                </div>
+                <div class="project-item">
+                    <h3>โปรเจคต์ 2</h3>
+                    <p>รายละเอียดของโปรเจคต์ 2</p>
+                </div>
+                <div class="project-item">
+                    <h3>โปรเจคต์ 3</h3>
+                    <p>รายละเอียดของโปรเจคต์ 3</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2>ทักษะ</h2>
+            <ul class="skills-list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>PHP</li>
+                <li>React Native</li>
+                <li>WordPress</li>
+                <li>MySQL</li>
+                <li>OOP</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>ติดต่อ</h2>
+            <form id="contact-form" action="https://formspree.io/f/xdkazonj" method="POST">
+                <label for="name" id="name_label">ชื่อ:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email" id="email_label"><p></p>อีเมล:sss</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message" id="message_label">ข้อความ:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit" id="submit_label">ส่งข้อความ</button>
+            </form>
+            
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p id="footer-text">สงวนลิขสิทธิ์ © 2023</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
