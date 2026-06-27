@@ -76,7 +76,7 @@ for /f %%A in ('git rev-list --count origin/master..HEAD') do set "AHEAD_COUNT=%
 for /f %%B in ('git rev-list --count HEAD..origin/master') do set "BEHIND_COUNT=%%B"
 
 if not "%AHEAD_COUNT%"=="0" (
-  echo Local master has %AHEAD_COUNT% unpushed commit(s).
+  echo Local master has %AHEAD_COUNT% unpushed commits.
   choice /C YN /N /M "Push these commits to origin/master now? [Y/N]: "
   if errorlevel 2 goto :cancelled
   git push origin master
@@ -84,7 +84,7 @@ if not "%AHEAD_COUNT%"=="0" (
 )
 
 if not "%BEHIND_COUNT%"=="0" (
-  echo [ERROR] Local master is behind origin/master by %BEHIND_COUNT% commit(s).
+  echo [ERROR] Local master is behind origin/master by %BEHIND_COUNT% commits.
   echo Pull the latest changes before deploying.
   goto :failed
 )
