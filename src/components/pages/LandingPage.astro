@@ -1,0 +1,25 @@
+---
+import HeroSection from '../landing/HeroSection.astro';
+import DemoSection from '../landing/DemoSection.astro';
+import CardGridSection from '../landing/CardGridSection.astro';
+import TestimonialsSection from '../landing/TestimonialsSection.astro';
+import ComparisonSection from '../landing/ComparisonSection.astro';
+import PricingSection from '../landing/PricingSection.astro';
+import StepsSection from '../landing/StepsSection.astro';
+import FaqSection from '../landing/FaqSection.astro';
+import FinalCtaSection from '../landing/FinalCtaSection.astro';
+import type { LandingContent } from '../../i18n/types';
+interface Props { content: LandingContent; lineUrl: string; }
+const { content, lineUrl } = Astro.props;
+---
+<HeroSection content={content.hero} lineUrl={lineUrl} />
+<DemoSection content={content.demo} lineUrl={lineUrl} />
+<CardGridSection title={content.painPoints.title} description={content.painPoints.description} items={content.painPoints.items} />
+<CardGridSection id="features" title={content.benefits.title} description={content.benefits.description} items={content.benefits.items} tone="warm" />
+<TestimonialsSection content={content.testimonials} />
+<ComparisonSection content={content.comparison} lineUrl={lineUrl} />
+<CardGridSection title={content.features.title} description={content.features.description} items={content.features.items} columns={3} />
+<PricingSection content={content.pricing} lineUrl={lineUrl} />
+<StepsSection content={content.steps} lineUrl={lineUrl} />
+<FaqSection content={content.faq} />
+<FinalCtaSection content={content.finalCta} lineUrl={lineUrl} />

@@ -1,0 +1,8 @@
+---
+interface Props { measurementId?: string; }
+const { measurementId } = Astro.props;
+---
+{measurementId && <meta name="chilltax-ga4-id" content={measurementId} />}
+<script>
+	import '../../scripts/analytics';
+</script>

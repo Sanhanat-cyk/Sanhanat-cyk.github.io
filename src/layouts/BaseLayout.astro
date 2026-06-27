@@ -1,0 +1,65 @@
+---
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import CookieBanner from '../components/layout/CookieBanner.astro';
+import Analytics from '../components/seo/Analytics.astro';
+import { localeTags, localizedPath } from '../i18n/config';
+import type { CommonContent, Locale, SeoContent } from '../i18n/types';
+import '../styles/global.css';
+
+interface Props {
+	locale: Locale;
+	seo: SeoContent;
+	common: CommonContent;
+	canonicalPath?: string;
+	alternatePath?: string;
+	schema?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { locale, seo, common, canonicalPath = localizedPath(locale), alternatePath = locale === 'th' ? '/en/' : '/', schema } = Astro.props;
+const siteUrl = Astro.site ?? new URL('https://chilltax.app');
+const canonical = new URL(canonicalPath, siteUrl);
+const alternateLocale: Locale = locale === 'th' ? 'en' : 'th';
+const lineUrl = import.meta.env.PUBLIC_LINE_URL || '#line';
+const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+const googleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+---
+<!doctype html>
+<html lang={localeTags[locale]}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="theme-color" content="#f4efea" />
+		<title>{seo.title}</title>
+		<meta name="description" content={seo.description} />
+		<link rel="canonical" href={canonical} />
+		<link rel="alternate" hreflang={localeTags[locale]} href={canonical} />
+		<link rel="alternate" hreflang={localeTags[alternateLocale]} href={new URL(alternatePath, siteUrl)} />
+		<link rel="alternate" hreflang="x-default" href={new URL('/', siteUrl)} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="ChillTax" />
+		<meta property="og:locale" content={locale === 'th' ? 'th_TH' : 'en_US'} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:title" content={seo.openGraphTitle} />
+		<meta property="og:description" content={seo.openGraphDescription} />
+		<meta property="og:image" content={new URL('/og-image.svg', siteUrl)} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={seo.openGraphTitle} />
+		<meta name="twitter:description" content={seo.openGraphDescription} />
+		<meta name="twitter:image" content={new URL('/og-image.svg', siteUrl)} />
+		{googleVerification && <meta name="google-site-verification" content={googleVerification} />}
+		{schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />}
+		<Analytics measurementId={gaMeasurementId} />
+		<slot name="head" />
+	</head>
+	<body>
+		<Header content={common} homePath={localizedPath(locale)} lineUrl={lineUrl} />
+		<main><slot /></main>
+		<Footer content={common} locale={locale} />
+		<CookieBanner content={common.cookie} privacyPath={localizedPath(locale, 'privacy-policy')} />
+	</body>
+</html>

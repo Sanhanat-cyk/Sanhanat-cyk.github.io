@@ -1,0 +1,19 @@
+---
+import type { LandingContent } from '../../i18n/types';
+interface Props { content: LandingContent['faq']; }
+const { content } = Astro.props;
+---
+<section class="section faq"><div class="container narrow"><div class="section-heading"><h2>{content.title}</h2></div>
+	<div class="list">{content.items.map((item, index) => <details open={index === 0}><summary>{item.question}<span aria-hidden="true">+</span></summary><p>{item.answer}</p></details>)}</div>
+</div></section>
+<style>
+	.faq { background: #fff8ef; }
+	.narrow { max-width: 850px; }
+	.list { display: grid; gap: .7rem; }
+	details { border: 1px solid var(--color-border); border-radius: 16px; background: var(--color-surface); }
+	summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem 1.25rem; font-weight: 800; cursor: pointer; list-style: none; }
+	summary::-webkit-details-marker { display: none; }
+	summary span { color: var(--color-primary); font-size: 1.5rem; transition: transform .2s ease; }
+	details[open] summary span { transform: rotate(45deg); }
+	details p { padding: 0 1.25rem 1.25rem; margin: 0; color: var(--color-muted); }
+</style>

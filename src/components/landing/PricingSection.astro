@@ -1,0 +1,28 @@
+---
+import type { LandingContent } from '../../i18n/types';
+interface Props { content: LandingContent['pricing']; lineUrl: string; }
+const { content, lineUrl } = Astro.props;
+---
+<section id="pricing" class="section pricing"><div class="container"><div class="section-heading"><h2>{content.title}</h2><p>{content.description}</p></div>
+	<div class="plans">{content.plans.map((plan) => <article class:list={{ highlighted: plan.highlighted }}>
+		{plan.highlighted && <span class="popular">{content.popular}</span>}<h3>{plan.name}</h3><p class="price"><strong>{plan.price}</strong> <span>{plan.period}</span></p><p class="subtitle">{plan.subtitle}</p>
+		<ul>{plan.features.map((feature) => <li><span aria-hidden="true">✓</span>{feature}</li>)}</ul><a class:list={['button', plan.highlighted ? 'button-primary' : 'button-secondary']} href={lineUrl}>{plan.cta}</a>
+	</article>)}</div>
+</div></section>
+<style>
+	.pricing { background: #fff8ef; }
+	.plans { display: grid; align-items: stretch; gap: 1rem; }
+	article { position: relative; display: flex; flex-direction: column; padding: 1.7rem; border: 1px solid var(--color-border); border-radius: 24px; background: var(--color-surface); box-shadow: var(--shadow-sm); }
+	article.highlighted { border: 2px solid var(--color-primary); box-shadow: var(--shadow-lg); }
+	.popular { position: absolute; top: -14px; right: 1.25rem; padding: .3rem .75rem; border-radius: 999px; background: var(--color-primary); color: white; font-size: .8rem; font-weight: 900; }
+	h3 { margin: 0; font-size: 1.4rem; }
+	.price { margin: .8rem 0 0; }
+	.price strong { font-size: 2.6rem; line-height: 1; letter-spacing: -.04em; }
+	.price span, .subtitle { color: var(--color-muted); }
+	.subtitle { min-height: 1.5rem; }
+	ul { display: grid; gap: .75rem; padding: 1.2rem 0; margin: 0 0 1rem; border-top: 1px solid var(--color-border); list-style: none; }
+	li { display: flex; gap: .55rem; }
+	li span { color: var(--color-green); font-weight: 900; }
+	.button { width: 100%; margin-top: auto; }
+	@media (min-width: 800px) { .plans { grid-template-columns: repeat(3, 1fr); } .highlighted { transform: translateY(-10px); } }
+</style>

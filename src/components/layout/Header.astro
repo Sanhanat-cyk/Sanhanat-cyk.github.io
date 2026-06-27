@@ -1,0 +1,44 @@
+---
+import type { CommonContent } from '../../i18n/types';
+interface Props { content: CommonContent; homePath: string; lineUrl: string; }
+const { content, homePath, lineUrl } = Astro.props;
+---
+<header class="site-header">
+	<nav class="nav container" aria-label="Main navigation">
+		<a class="brand" href={homePath} aria-label={`${content.brand} home`}>
+			<span class="brand-mark" aria-hidden="true"></span><span>{content.brand}</span>
+		</a>
+		<div class="desktop-links">
+			{content.navigation.map((item) => <a href={`${homePath}${item.href}`}>{item.label}</a>)}
+			<a class="button button-primary nav-cta" href={lineUrl}>{content.startFree}</a>
+		</div>
+		<button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label={content.menuLabel} data-menu-toggle>
+			<span></span><span></span><span></span>
+		</button>
+	</nav>
+	<div id="mobile-menu" class="mobile-menu" data-mobile-menu hidden>
+		<div class="container">
+			{content.navigation.map((item) => <a href={`${homePath}${item.href}`}>{item.label}</a>)}
+			<a class="button button-primary" href={lineUrl}>{content.startFree}</a>
+		</div>
+	</div>
+</header>
+<script>
+	import '../../scripts/navigation';
+</script>
+<style>
+	.site-header { position: sticky; z-index: 50; top: 0; border-bottom: 1px solid rgb(230 214 200 / 85%); background: rgb(244 239 234 / 84%); backdrop-filter: blur(16px); }
+	.nav { display: flex; min-height: 70px; align-items: center; justify-content: space-between; gap: 1rem; }
+	.brand { display: inline-flex; align-items: center; gap: .65rem; font-size: 1.32rem; font-weight: 900; letter-spacing: -.03em; text-decoration: none; }
+	.brand-mark { width: 25px; height: 25px; border-radius: 3px 100% 3px 100%; background: linear-gradient(135deg, #e0943d, #a85808); transform: rotate(-8deg); }
+	.desktop-links { display: none; align-items: center; gap: 1.8rem; }
+	.desktop-links > a:not(.button) { color: var(--color-muted); font-weight: 700; text-decoration: none; }
+	.desktop-links > a:hover { color: var(--color-text); }
+	.nav-cta { min-height: 42px; padding: .55rem 1.25rem; }
+	.menu-button { display: grid; width: 44px; height: 44px; padding: 10px; border: 1px solid var(--color-border); border-radius: 12px; background: var(--color-surface); place-content: center; gap: 5px; cursor: pointer; }
+	.menu-button span { display: block; width: 21px; height: 2px; border-radius: 2px; background: currentColor; }
+	.mobile-menu { position: absolute; width: 100%; padding: 1rem 0 1.4rem; border-bottom: 1px solid var(--color-border); background: var(--color-bg); box-shadow: var(--shadow-sm); }
+	.mobile-menu .container { display: grid; gap: .5rem; }
+	.mobile-menu a:not(.button) { padding: .7rem; font-weight: 700; text-decoration: none; }
+	@media (min-width: 760px) { .desktop-links { display: flex; } .menu-button, .mobile-menu { display: none; } }
+</style>

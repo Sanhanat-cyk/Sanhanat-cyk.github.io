@@ -1,0 +1,55 @@
+---
+import type { LandingContent } from '../../i18n/types';
+interface Props { content: LandingContent['hero']; lineUrl: string; }
+const { content, lineUrl } = Astro.props;
+---
+<section class="hero">
+	<div class="container hero-grid">
+		<div class="copy">
+			<p class="eyebrow">{content.eyebrow}</p>
+			<h1>{content.title} <span>{content.highlight}</span></h1>
+			<p class="description">{content.description}</p>
+			<div class="actions"><a class="button button-primary" href={lineUrl}>{content.primaryCta}</a><a class="button button-secondary" href="#demo">{content.secondaryCta}</a></div>
+			<ul class="trust">{content.trust.map((item) => <li><span aria-hidden="true">✓</span>{item}</li>)}</ul>
+		</div>
+		<div class="chat-wrap" aria-label="ChillTax chat preview">
+			<div class="shape shape-one"></div><div class="shape shape-two"></div>
+			<div class="chat-card">
+				<div class="chat-head"><span class="avatar" aria-hidden="true">🌶️</span><div><strong>{content.chat.assistant}</strong><small><i></i>{content.chat.status}</small></div></div>
+				<div class="messages"><p class="user">{content.chat.userMessage}</p><div class="reply">{content.chat.reply.map((line) => <p>{line}</p>)}</div></div>
+				<div class="chat-input"><span>{content.chat.placeholder}</span><b aria-hidden="true">➤</b></div>
+			</div>
+		</div>
+	</div>
+</section>
+<style>
+	.hero { padding: clamp(3.5rem, 8vw, 7rem) 0 clamp(5rem, 10vw, 8rem); overflow: hidden; }
+	.hero-grid { display: grid; align-items: center; gap: 3.5rem; }
+	.copy { text-align: center; }
+	.eyebrow { display: inline-flex; padding: .45rem .85rem; border: 1px solid #e8c9a8; border-radius: 999px; background: #fff8ed; color: var(--color-primary-dark); font-size: .9rem; font-weight: 800; }
+	h1 { margin-bottom: 1.25rem; font-size: clamp(2.5rem, 8vw, 5.4rem); line-height: 1.02; letter-spacing: -.055em; text-wrap: balance; }
+	h1 span { display: inline-block; color: var(--color-primary); }
+	.description { max-width: 650px; margin: 0 auto 1.6rem; color: var(--color-muted); font-size: clamp(1rem, 2.1vw, 1.18rem); }
+	.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; }
+	.trust { display: flex; flex-wrap: wrap; justify-content: center; gap: .65rem 1.2rem; padding: 0; margin: 1.3rem 0 0; color: var(--color-muted); font-size: .86rem; list-style: none; }
+	.trust li { display: flex; align-items: center; gap: .35rem; }
+	.trust span { color: var(--color-green); font-weight: 900; }
+	.chat-wrap { position: relative; width: min(100%, 430px); margin-inline: auto; }
+	.chat-card { position: relative; z-index: 2; overflow: hidden; border: 1px solid var(--color-border); border-radius: 28px; background: var(--color-surface); box-shadow: var(--shadow-lg); transform: rotate(1.5deg); }
+	.chat-head { display: flex; align-items: center; gap: .8rem; padding: 1rem 1.2rem; background: #5b1e05; color: white; }
+	.avatar { display: grid; width: 44px; height: 44px; border-radius: 50%; background: #fff3df; place-items: center; }
+	.chat-head strong, .chat-head small { display: block; }
+	.chat-head small { color: rgb(255 255 255 / 70%); font-size: .75rem; }
+	.chat-head i { display: inline-block; width: 7px; height: 7px; margin-right: .3rem; border-radius: 50%; background: var(--color-green); }
+	.messages { min-height: 310px; padding: 1.5rem 1rem; background: #f1e8df; }
+	.messages p { margin: 0; }
+	.user { width: fit-content; max-width: 80%; margin-left: auto !important; padding: .75rem 1rem; border-radius: 17px 17px 3px 17px; background: var(--color-green); color: white; }
+	.reply { width: fit-content; max-width: 90%; margin-top: 1rem; padding: 1rem; border-radius: 17px 17px 17px 3px; background: white; box-shadow: 0 5px 18px rgb(106 35 0 / 7%); }
+	.reply p + p { margin-top: .25rem; color: var(--color-muted); }
+	.chat-input { display: flex; align-items: center; justify-content: space-between; padding: 1rem; color: #a48875; font-size: .88rem; }
+	.chat-input b { display: grid; width: 34px; height: 34px; border-radius: 50%; background: var(--color-green); color: white; place-items: center; }
+	.shape { position: absolute; border-radius: 50%; filter: blur(1px); }
+	.shape-one { width: 190px; height: 190px; top: -40px; right: -70px; background: #efd09a; }
+	.shape-two { width: 140px; height: 140px; bottom: -35px; left: -45px; background: #d7e4b8; }
+	@media (min-width: 860px) { .hero-grid { grid-template-columns: 1.08fr .92fr; } .copy { text-align: left; } .description { margin-left: 0; } .actions, .trust { justify-content: flex-start; } }
+</style>

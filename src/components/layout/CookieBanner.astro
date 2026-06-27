@@ -1,0 +1,21 @@
+---
+import type { CommonContent } from '../../i18n/types';
+interface Props { content: CommonContent['cookie']; privacyPath: string; }
+const { content, privacyPath } = Astro.props;
+---
+<aside class="cookie" role="dialog" aria-live="polite" aria-label={content.title} data-cookie-banner hidden>
+	<div><strong>{content.title}</strong><p>{content.description} <a href={privacyPath}>{content.privacyLink}</a></p></div>
+	<div class="actions"><button type="button" class="button button-secondary" data-cookie-reject>{content.reject}</button><button type="button" class="button button-primary" data-cookie-accept>{content.accept}</button></div>
+</aside>
+<script>
+	import '../../scripts/cookie-consent';
+</script>
+<style>
+	.cookie { position: fixed; z-index: 100; right: 1rem; bottom: 1rem; left: 1rem; max-width: 760px; margin-inline: auto; padding: 1.1rem; border: 1px solid var(--color-border); border-radius: 20px; background: var(--color-surface); box-shadow: var(--shadow-lg); }
+	.cookie[hidden] { display: none; }
+	.cookie strong { display: block; margin-bottom: .25rem; font-size: 1.05rem; }
+	.cookie p { margin-bottom: 1rem; color: var(--color-muted); font-size: .9rem; }
+	.actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+	.actions .button { min-height: 42px; flex: 1 1 180px; cursor: pointer; }
+	@media (min-width: 700px) { .cookie { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 1rem; } .cookie p { margin: 0; } .actions { flex-wrap: nowrap; } .actions .button { white-space: nowrap; } }
+</style>

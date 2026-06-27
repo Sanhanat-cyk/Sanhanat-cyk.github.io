@@ -1,0 +1,135 @@
+import type { LandingContent } from '../../types';
+
+export const landingEn = {
+	seo: {
+		title: 'ChillTax — Tax assistant for freelancers and online creators on LINE',
+		description: 'Track income, classify Thai tax categories, manage withholding certificates, and see your estimated tax in 30 seconds with ChillTax on LINE.',
+		openGraphTitle: 'ChillTax — Make taxes feel easy on LINE',
+		openGraphDescription: 'A LINE-based tax assistant for freelancers, creators, and online sellers. Start free.',
+	},
+	hero: {
+		eyebrow: '🌿 Your tax assistant on LINE',
+		title: 'Stay on top of taxes all year — see your estimate in',
+		highlight: '30 seconds',
+		description: 'Brand deals, online sales, and freelance projects all coming in at once? Just tell Chilly on LINE. It organizes each entry, estimates your tax, and helps you plan ahead without accounting jargon.',
+		primaryCta: 'Start free on LINE',
+		secondaryCta: 'See a tax estimate',
+		trust: ['Free to start, no card', 'Automatic income classification', 'Deadline and threshold alerts'],
+		chat: {
+			assistant: 'Chilly · Tax assistant',
+			status: 'Online',
+			userMessage: 'Brand review income: ฿5,000',
+			reply: ['Saved! 🎉 Classified under Section 40(2)', '50% standard expense deduction', 'Estimated tax ~฿75'],
+			placeholder: 'Tell Chilly about your income...',
+		},
+	},
+	demo: {
+		title: 'See ChillTax in action in',
+		highlight: '60 seconds',
+		description: 'From recording your first payment to a filing-ready summary.',
+		videoLabel: 'Product demo · 60 seconds',
+		steps: [
+			{ icon: '1', title: 'Record income', description: 'Chat with Chilly like a friend' },
+			{ icon: '2', title: 'Classify it', description: 'See which Section 40 category applies' },
+			{ icon: '3', title: 'See estimates', description: 'Know your tax and important alerts' },
+			{ icon: '4', title: 'Get filing-ready', description: 'Export a complete summary' },
+		],
+		closing: 'No accounting degree required.',
+		cta: 'Let Chilly help',
+	},
+	painPoints: {
+		title: 'Why do taxes feel so difficult for independent earners?',
+		description: 'If any of these sound familiar, you are not alone.',
+		items: [
+			{ icon: '🤷', title: 'No idea how much to set aside', description: 'Irregular income makes it hard to estimate tax or plan cash flow before year-end.' },
+			{ icon: '😰', title: 'Worried about back taxes', description: 'Penalties and surprise notices are stressful when you cannot see where you stand.' },
+			{ icon: '🧾', title: 'Unsure what you can deduct', description: 'Cameras, internet, software, and travel—knowing what counts can be confusing.' },
+		],
+	},
+	benefits: {
+		title: 'ChillTax makes tax feel manageable',
+		description: 'Built specifically for people earning from multiple sources.',
+		items: [
+			{ icon: '💬', title: 'As easy as sending a message', description: 'No long forms and no accounting language. Just chat on LINE.' },
+			{ icon: '🧩', title: 'Designed for mixed income', description: 'Keep every income stream together and classify Section 40 automatically.' },
+			{ icon: '🛡️', title: 'Plan early, worry less', description: 'Get alerts before filing dates and the ฿1.8M VAT threshold.' },
+		],
+	},
+	testimonials: {
+		title: 'Made for people with income from everywhere',
+		disclaimer: '* Illustrative personas showing intended use — not customer testimonials.',
+		items: [
+			{ quote: 'Brand payments arrive on different days. Now I leave each one in LINE and see the full picture whenever I need it.', role: 'TikTok creator', label: 'Example persona' },
+			{ quote: 'I have a day job and freelance projects. Chilly helps separate each income type, so I finally feel organized.', role: 'Freelance designer', label: 'Example persona' },
+			{ quote: 'Online sales fluctuate constantly. Getting an alert before the VAT threshold gives me time to prepare.', role: 'Online seller', label: 'Example persona' },
+		],
+	},
+	comparison: {
+		title: 'Why ChillTax?',
+		description: 'A simpler way to stay tax-ready throughout the year.',
+		columns: ['ChillTax', 'Filing app', 'Accounting software', 'Spreadsheet'],
+		rows: [
+			{ feature: 'Works through LINE chat', values: ['✓', '–', '–', '–'] },
+			{ feature: 'Tracks activity all year', values: ['✓', 'Limited', '✓', '✓'] },
+			{ feature: 'Classifies Section 40', values: ['✓', 'Limited', '–', '–'] },
+			{ feature: 'No accounting knowledge needed', values: ['✓', '✓', '–', '–'] },
+			{ feature: 'Starting price', values: ['Free', '฿349', '฿1,000+/yr', 'Free, but manual'] },
+		],
+		closing: 'Ready for a less stressful tax year?',
+		cta: 'Try it for free',
+	},
+	features: {
+		title: 'More than a tax calculator',
+		description: 'Useful tools for independent earners, all year round.',
+		items: [
+			{ icon: '📄', title: 'Track 50 Tawi certificates', description: 'Keep withholding tax totals together without manual addition.' },
+			{ icon: '🧩', title: 'Automatic Section 40 classification', description: 'Understand how each income item is categorized.' },
+			{ icon: '📸', title: 'Record work expenses', description: 'Keep cameras, software, internet, and other work costs organized.' },
+			{ icon: '🔔', title: 'Threshold alerts', description: 'Stay ahead of tax deadlines and the ฿1.8M VAT threshold.' },
+			{ icon: '📊', title: 'Excel and CSV export', description: 'Use your data elsewhere or send it to your accountant.' },
+			{ icon: '📈', title: 'Income trends and statistics', description: 'See weekly trends and year-over-year performance at a glance.' },
+		],
+	},
+	pricing: {
+		title: 'Start genuinely free',
+		description: 'Choose a plan that fits today and upgrade as your income grows.',
+		popular: 'Best value',
+		plans: [
+			{ name: 'Free', price: '฿0', period: 'forever', subtitle: 'No expiry', features: ['100 entries/year', 'Thai tax deadline alerts', 'Excel export'], cta: 'Start free' },
+			{ name: 'Pro', price: '฿249', period: '/mo', subtitle: 'or ฿1,990/year', features: ['2,000 entries/year', 'Deductions + 50 Tawi tracking', 'Charts, statistics, and CSV'], cta: 'Choose Pro', highlighted: true },
+			{ name: 'Unlimited', price: '฿349', period: '/mo', subtitle: 'or ฿2,790/year', features: ['Unlimited entries', 'Everything in Pro', 'Priority support + backup'], cta: 'Choose Unlimited' },
+		],
+	},
+	steps: {
+		title: 'Get started in four steps',
+		description: 'No new app to install. Use the LINE app you already have.',
+		items: [
+			{ icon: '1', title: 'Add ChillTax on LINE', description: 'Add the official account for free—no card required.' },
+			{ icon: '2', title: 'Send your first entry', description: 'Tell Chilly about a payment and it will organize it.' },
+			{ icon: '3', title: 'Open your dashboard', description: 'See estimates, summaries, and alerts in one place.' },
+			{ icon: '4', title: 'Upgrade when ready', description: 'Start free, then upgrade only when you need more.' },
+		],
+		closing: 'Your first entry takes less than a minute.',
+		cta: 'Start step one',
+	},
+	faq: {
+		title: 'Frequently asked questions',
+		items: [
+			{ question: 'How much income requires a Thai tax return?', answer: 'Filing thresholds depend on income and marital status. Independent income may also require a mid-year P.N.D.94 return. ChillTax provides reminders, but individual circumstances should be confirmed with a tax professional.' },
+			{ question: 'What expenses can freelancers deduct?', answer: 'The rules depend on your income category. Some income allows a standard deduction, while actual expenses may require evidence such as receipts.' },
+			{ question: 'Standard or actual expenses—which is better?', answer: 'A standard deduction uses the percentage allowed by law. Actual expenses require evidence. ChillTax can help compare the available approaches using your information.' },
+			{ question: 'Can I recover 3% withholding tax?', answer: 'Withholding is tax paid in advance. It is credited against your final calculation, and an overpayment may be refundable subject to Revenue Department rules.' },
+			{ question: 'What should I do with a 50 Tawi certificate?', answer: 'Keep every withholding certificate and record its amount. ChillTax helps total them for your return.' },
+			{ question: 'Do I need to file P.N.D.94 mid-year?', answer: 'Certain Section 40(5)–(8) income may require a mid-year return once thresholds are met. ChillTax can provide an initial estimate and reminder.' },
+			{ question: 'Do I need to connect a bank account or card?', answer: 'No. You enter income through LINE yourself, and the Free plan does not require a credit card.' },
+			{ question: 'What types of income does ChillTax support?', answer: 'Examples include creator deals, freelance work, online sales, commissions, and general contract work.' },
+			{ question: 'Does ChillTax replace an accountant?', answer: 'No. ChillTax helps you stay organized and estimate tax throughout the year. Complex situations should be reviewed by a qualified professional.' },
+			{ question: 'Is it really free, and is my data safe?', answer: 'The Free plan has no expiry. ChillTax is designed around data security and PDPA principles, and we do not sell personal data.' },
+		],
+	},
+	finalCta: {
+		title: 'Taxes feel easier when you can just chat',
+		description: 'Record your first income today. Free, no card, and less than a minute to begin.',
+		cta: 'Add ChillTax on LINE',
+	},
+} satisfies LandingContent;

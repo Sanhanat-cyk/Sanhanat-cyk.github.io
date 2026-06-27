@@ -1,0 +1,10 @@
+{
+  "name": "ChillTax",
+  "short_name": "ChillTax",
+  "description": "ผู้ช่วยภาษีในแชต LINE สำหรับคนรายได้หลายทาง",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4efea",
+  "theme_color": "#f4efea",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

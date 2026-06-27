@@ -1,17 +1,15 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LandingPage from '../components/pages/LandingPage.astro';
+import { commonTh } from '../i18n/locales/th/common';
+import { landingTh } from '../i18n/locales/th/landing';
 
+const lineUrl = import.meta.env.PUBLIC_LINE_URL || '#line';
+const schema = [
+	{ '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'ChillTax', applicationCategory: 'FinanceApplication', operatingSystem: 'LINE, Web', description: landingTh.seo.description, offers: landingTh.pricing.plans.map((plan) => ({ '@type': 'Offer', name: plan.name, price: plan.price.replace(/[^0-9]/g, '') || '0', priceCurrency: 'THB' })) },
+	{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: landingTh.faq.items.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
+];
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout locale="th" seo={landingTh.seo} common={commonTh} canonicalPath="/" alternatePath="/en/" schema={schema}>
+	<LandingPage content={landingTh} lineUrl={lineUrl} />
+</BaseLayout>

@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalPage from '../components/pages/LegalPage.astro';
+import { commonTh } from '../i18n/locales/th/common';
+import { privacyTh } from '../i18n/locales/th/legal';
+---
+<BaseLayout locale="th" seo={privacyTh.seo} common={commonTh} canonicalPath="/privacy-policy/" alternatePath="/en/privacy-policy/">
+	<LegalPage content={privacyTh} />
+</BaseLayout>

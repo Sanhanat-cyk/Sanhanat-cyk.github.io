@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LegalPage from '../../components/pages/LegalPage.astro';
+import { commonEn } from '../../i18n/locales/en/common';
+import { termsEn } from '../../i18n/locales/en/legal';
+---
+<BaseLayout locale="en" seo={termsEn.seo} common={commonEn} canonicalPath="/en/terms-and-conditions/" alternatePath="/terms-and-conditions/">
+	<LegalPage content={termsEn} />
+</BaseLayout>
