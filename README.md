@@ -28,9 +28,8 @@ pnpm build
 
 Deployment is intentionally manual so regular pushes do not consume GitHub Actions minutes.
 
-1. Commit and push the intended release to `master`.
-2. Make sure [GitHub CLI](https://cli.github.com/) is installed and authenticated with `gh auth login`.
-3. Run `deploy.bat` from Windows.
+1. Commit the intended release on `master`. The script can push committed changes after confirmation.
+2. Run `deploy.bat` from Windows. On the first run, it can install [GitHub CLI](https://cli.github.com/) through `winget` and open the GitHub sign-in flow automatically.
 
 The script verifies that the working tree is clean and synchronized with `origin/master`, runs the checks and production build locally, asks for confirmation, then triggers the `workflow_dispatch` deployment.
 
