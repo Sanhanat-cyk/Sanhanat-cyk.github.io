@@ -24,6 +24,16 @@ pnpm check
 pnpm build
 ```
 
+## Manual deployment
+
+Deployment is intentionally manual so regular pushes do not consume GitHub Actions minutes.
+
+1. Commit and push the intended release to `master`.
+2. Make sure [GitHub CLI](https://cli.github.com/) is installed and authenticated with `gh auth login`.
+3. Run `deploy.bat` from Windows.
+
+The script verifies that the working tree is clean and synchronized with `origin/master`, runs the checks and production build locally, asks for confirmation, then triggers the `workflow_dispatch` deployment.
+
 ## Configuration
 
 Copy `.env.example` to `.env` and provide the production values:
