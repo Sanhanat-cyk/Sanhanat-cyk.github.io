@@ -68,7 +68,7 @@ for /f "delims=" %%S in ('git status --porcelain') do (
   goto :failed
 )
 
-echo [1/5] Syncing remote status...
+echo [1/6] Syncing remote status...
 git fetch --quiet origin master
 if errorlevel 1 goto :failed
 
@@ -89,15 +89,15 @@ if not "%BEHIND_COUNT%"=="0" (
   goto :failed
 )
 
-echo [2/5] Installing locked dependencies...
+echo [2/6] Installing locked dependencies...
 call pnpm install --frozen-lockfile
 if errorlevel 1 goto :failed
 
-echo [3/5] Running Astro diagnostics...
+echo [3/6] Running Astro diagnostics...
 call pnpm run check
 if errorlevel 1 goto :failed
 
-echo [4/5] Building the production site locally...
+echo [4/6] Building the production site locally...
 call pnpm run build
 if errorlevel 1 goto :failed
 
@@ -108,7 +108,25 @@ choice /C YN /N /M "Trigger GitHub Pages deployment now? [Y/N]: "
 if errorlevel 2 goto :cancelled
 
 echo.
-echo [5/5] Triggering the GitHub Actions workflow...
+echo [5/6] Ensuring GitHub Pages uses GitHub Actions...
+"%GH_CMD%" api repos/Sanhanat-cyk/Sanhanat-cyk.github.io/pages >nul 2>&1
+if errorlevel 1 (
+  "%GH_CMD%" api --method POST repos/Sanhanat-cyk/Sanhanat-cyk.github.io/pages -f build_type=workflow >nul
+  if errorlevel 1 (
+    echo [ERROR] GitHub Pages could not be enabled for this repository.
+    echo The repository is private and the current GitHub plan does not support private Pages.
+    echo Make the repository public or upgrade the GitHub plan, then run this script again.
+    goto :failed
+  )
+) else (
+  "%GH_CMD%" api --method PUT repos/Sanhanat-cyk/Sanhanat-cyk.github.io/pages -f build_type=workflow >nul
+  if errorlevel 1 (
+    echo [ERROR] GitHub Pages could not be configured to use GitHub Actions.
+    goto :failed
+  )
+)
+
+echo [6/6] Triggering the GitHub Actions workflow...
 "%GH_CMD%" workflow run deploy.yml --ref master
 if errorlevel 1 goto :failed
 
