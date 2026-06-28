@@ -3,6 +3,7 @@ declare global {
 }
 
 const measurementId = document.querySelector<HTMLMetaElement>('meta[name="chilltax-ga4-id"]')?.content;
+const debugMode = document.querySelector<HTMLMetaElement>('meta[name="chilltax-ga4-debug"]')?.content === 'true';
 let loaded = false;
 
 const loadAnalytics = (): void => {
@@ -15,7 +16,7 @@ const loadAnalytics = (): void => {
 	window.dataLayer = window.dataLayer ?? [];
 	window.gtag = (...args: unknown[]) => window.dataLayer?.push(args);
 	window.gtag('js', new Date());
-	window.gtag('config', measurementId, { anonymize_ip: true });
+	window.gtag('config', measurementId, { anonymize_ip: true, debug_mode: debugMode });
 };
 
 try { if (localStorage.getItem('chilltax-cookie-consent') === 'accepted') loadAnalytics(); } catch { /* storage unavailable */ }

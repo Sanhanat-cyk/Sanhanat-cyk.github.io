@@ -1,8 +1,17 @@
 ---
-interface Props { measurementId?: string; }
-const { measurementId } = Astro.props;
+interface Props {
+	measurementId?: string;
+	debugMode?: boolean;
+}
+
+const { measurementId, debugMode = false } = Astro.props;
 ---
-{measurementId && <meta name="chilltax-ga4-id" content={measurementId} />}
+{measurementId && (
+	<>
+		<meta name="chilltax-ga4-id" content={measurementId} />
+		<meta name="chilltax-ga4-debug" content={String(debugMode)} />
+	</>
+)}
 <script>
 	import '../../scripts/analytics';
 </script>

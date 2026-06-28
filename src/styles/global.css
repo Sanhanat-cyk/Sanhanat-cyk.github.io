@@ -18,7 +18,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: "Noto Sans Thai", "Leelawadee UI", Tahoma, Arial, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-noto-sans-thai), "Leelawadee UI", Tahoma, Arial, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 body.menu-open { overflow: hidden; }
 a { color: inherit; }
 button, input { font: inherit; }

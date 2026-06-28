@@ -1,9 +1,9 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://chilltax.app',
+	site: 'https://sanhanat-cyk.github.io',
 	i18n: {
 		locales: ['th', 'en'],
 		defaultLocale: 'th',
@@ -11,4 +11,15 @@ export default defineConfig({
 			prefixDefaultLocale: false,
 		},
 	},
+	fonts: [
+		{
+			provider: fontProviders.fontsource(),
+			name: 'Noto Sans Thai',
+			cssVariable: '--font-noto-sans-thai',
+			weights: ['100 900'],
+			styles: ['normal'],
+			subsets: ['thai', 'latin'],
+			fallbacks: ['sans-serif'],
+		},
+	],
 });

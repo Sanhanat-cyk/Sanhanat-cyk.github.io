@@ -38,7 +38,9 @@ The script verifies that the working tree is clean and synchronized with `origin
 Copy `.env.example` to `.env` and provide the production values:
 
 - `PUBLIC_LINE_URL` — LINE OA destination used by calls to action
-- `PUBLIC_GA_MEASUREMENT_ID` — GA4 measurement ID; analytics loads only after consent
+- `APP_ENV` — selects `development`, `staging`, or `production`
+- `GA_MEASUREMENT_ID_DEV` — GA4 property used by development and staging
+- `GA_MEASUREMENT_ID_PROD` — GA4 property used by production
 - `PUBLIC_GOOGLE_SITE_VERIFICATION` — Google Search Console verification token
 
 ## Structure
