@@ -14,7 +14,9 @@ const loadAnalytics = (): void => {
 	script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
 	document.head.append(script);
 	window.dataLayer = window.dataLayer ?? [];
-	window.gtag = (...args: unknown[]) => window.dataLayer?.push(args);
+	window.gtag = function gtag(..._args: unknown[]): void {
+		window.dataLayer?.push(arguments);
+	};
 	window.gtag('js', new Date());
 	window.gtag('config', measurementId, { anonymize_ip: true, debug_mode: debugMode });
 };
