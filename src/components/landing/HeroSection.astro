@@ -1,7 +1,7 @@
 ---
 import type { LandingContent } from '../../i18n/types';
-interface Props { content: LandingContent['hero']; lineUrl: string; }
-const { content, lineUrl } = Astro.props;
+interface Props { content: LandingContent['hero']; appUrl: string; }
+const { content, appUrl } = Astro.props;
 ---
 <section class="hero">
 	<div class="container hero-grid">
@@ -9,7 +9,7 @@ const { content, lineUrl } = Astro.props;
 			<p class="eyebrow">{content.eyebrow}</p>
 			<h1>{content.title} <span>{content.highlight}</span></h1>
 			<p class="description">{content.description}</p>
-			<div class="actions"><a class="button button-primary" href={lineUrl}>{content.primaryCta}</a><a class="button button-secondary" href="#demo">{content.secondaryCta}</a></div>
+			<div class="actions"><a class="button button-primary" href={appUrl}>{content.primaryCta}</a><a class="button button-secondary" href="#demo">{content.secondaryCta}</a></div>
 			<ul class="trust">{content.trust.map((item) => <li><span aria-hidden="true">✓</span>{item}</li>)}</ul>
 		</div>
 		<div class="chat-wrap" aria-label="ChillTax chat preview">

@@ -1,14 +1,14 @@
 ---
 import type { LandingContent } from '../../i18n/types';
-interface Props { content: LandingContent['demo']; lineUrl: string; }
-const { content, lineUrl } = Astro.props;
+interface Props { content: LandingContent['demo']; appUrl: string; }
+const { content, appUrl } = Astro.props;
 ---
 <section id="demo" class="section demo">
 	<div class="container">
 		<div class="section-heading"><h2>{content.title} <span>{content.highlight}</span></h2><p>{content.description}</p></div>
 		<div class="video"><div class="play" aria-hidden="true">▶</div><strong>{content.videoLabel}</strong><small>ChillTax</small></div>
 		<ol class="steps">{content.steps.map((step) => <li><b>{step.icon}</b><div><h3>{step.title}</h3><p>{step.description}</p></div></li>)}</ol>
-		<div class="closing"><p>{content.closing}</p><a class="button button-primary" href={lineUrl}>{content.cta}</a></div>
+		<div class="closing"><p>{content.closing}</p><a class="button button-primary" href={appUrl}>{content.cta}</a></div>
 	</div>
 </section>
 <style>

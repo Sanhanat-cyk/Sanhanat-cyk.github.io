@@ -18,9 +18,10 @@ interface Props {
 }
 
 const { locale, seo, common, canonicalPath = localizedPath(locale), alternatePath = locale === 'th' ? '/en/' : '/', schema } = Astro.props;
-const siteUrl = Astro.site ?? new URL('https://sanhanat-cyk.github.io');
+const siteUrl = Astro.site ?? new URL(import.meta.env.PUBLIC_SITE_URL || 'https://sanhanat-cyk.github.io');
 const canonical = new URL(canonicalPath, siteUrl);
 const alternateLocale: Locale = locale === 'th' ? 'en' : 'th';
+const appUrl = import.meta.env.PUBLIC_APP_URL || '#app';
 const lineUrl = import.meta.env.PUBLIC_LINE_URL || '#line';
 const googleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 ---
@@ -58,7 +59,7 @@ const googleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 		<slot name="head" />
 	</head>
 	<body>
-		<Header content={common} homePath={localizedPath(locale)} lineUrl={lineUrl} />
+		<Header content={common} homePath={localizedPath(locale)} appUrl={appUrl} />
 		<main><slot /></main>
 		<Footer content={common} locale={locale} />
 		<CookieBanner content={common.cookie} privacyPath={localizedPath(locale, 'privacy-policy')} />

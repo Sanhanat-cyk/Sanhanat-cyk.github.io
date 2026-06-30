@@ -1,9 +1,9 @@
 ---
 import type { LandingContent } from '../../i18n/types';
-interface Props { content: LandingContent['finalCta']; lineUrl: string; }
-const { content, lineUrl } = Astro.props;
+interface Props { content: LandingContent['finalCta']; appUrl: string; }
+const { content, appUrl } = Astro.props;
 ---
-<section id="line" class="section final-cta"><div class="container"><div class="panel"><span class="leaf" aria-hidden="true"></span><h2>{content.title}</h2><p>{content.description}</p><a class="button button-primary" href={lineUrl}>{content.cta}</a></div></div></section>
+<section id="line" class="section final-cta"><div class="container"><div class="panel"><span class="leaf" aria-hidden="true"></span><h2>{content.title}</h2><p>{content.description}</p><a class="button button-primary" href={appUrl}>{content.cta}</a></div></div></section>
 <style>
 	.final-cta { background: var(--color-bg); }
 	.panel { position: relative; overflow: hidden; padding: clamp(2.5rem, 8vw, 5rem) 1.5rem; border-radius: var(--radius-lg); background: #5b1e05; color: white; text-align: center; box-shadow: var(--shadow-lg); }

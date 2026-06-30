@@ -3,12 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import LandingPage from '../../components/pages/LandingPage.astro';
 import { commonEn } from '../../i18n/locales/en/common';
 import { landingEn } from '../../i18n/locales/en/landing';
-const lineUrl = import.meta.env.PUBLIC_LINE_URL || '#line';
+const appUrl = import.meta.env.PUBLIC_APP_URL || '#app';
 const schema = [
 	{ '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'ChillTax', applicationCategory: 'FinanceApplication', operatingSystem: 'LINE, Web', description: landingEn.seo.description },
 	{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: landingEn.faq.items.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
 ];
 ---
 <BaseLayout locale="en" seo={landingEn.seo} common={commonEn} canonicalPath="/en/" alternatePath="/" schema={schema}>
-	<LandingPage content={landingEn} lineUrl={lineUrl} />
+	<LandingPage content={landingEn} appUrl={appUrl} />
 </BaseLayout>
