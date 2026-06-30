@@ -53,6 +53,8 @@ deploy.bat                          # Manual deploy (Windows)
 
 - Components รับ content ผ่าน **typed props** เท่านั้น — ห้าม import locale files ใน component
 - Thai = default locale ที่ `/`, English ที่ `/en/`
-- ทุก CTA ชี้ไป LINE OA ผ่าน `PUBLIC_LINE_URL`
+- ทุก CTA ชี้ไป product ผ่าน `PUBLIC_APP_URL`
 - Analytics โหลดหลัง consent เท่านั้น
 - Deploy เป็น manual workflow_dispatch (ไม่ auto-deploy on push)
+- **Semantic HTML** — ใช้ `<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<figure>`, `<time>`, `<details>` ให้ถูกต้อง
+- **JSON-LD Schema** — ทุกหน้าต้องมี structured data ที่เหมาะสม (ดู `.kiro/docs/seo.md`)

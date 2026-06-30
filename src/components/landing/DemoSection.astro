@@ -5,16 +5,16 @@ const { content, appUrl } = Astro.props;
 ---
 <section id="demo" class="section demo">
 	<div class="container">
-		<div class="section-heading"><h2>{content.title} <span>{content.highlight}</span></h2><p>{content.description}</p></div>
-		<div class="video"><div class="play" aria-hidden="true">▶</div><strong>{content.videoLabel}</strong><small>ChillTax</small></div>
-		<ol class="steps">{content.steps.map((step) => <li><b>{step.icon}</b><div><h3>{step.title}</h3><p>{step.description}</p></div></li>)}</ol>
-		<div class="closing"><p>{content.closing}</p><a class="button button-primary" href={appUrl}>{content.cta}</a></div>
+		<header class="section-heading"><h2>{content.title} <span>{content.highlight}</span></h2><p>{content.description}</p></header>
+		<figure class="video" aria-label={content.videoLabel}><div class="play" aria-hidden="true">▶</div><figcaption><strong>{content.videoLabel}</strong><small>ChillTax</small></figcaption></figure>
+		<ol class="steps">{content.steps.map((step) => <li><b aria-hidden="true">{step.icon}</b><div><h3>{step.title}</h3><p>{step.description}</p></div></li>)}</ol>
+		<footer class="closing"><p>{content.closing}</p><a class="button button-primary" href={appUrl}>{content.cta}</a></footer>
 	</div>
 </section>
 <style>
 	.demo { background: #fff8ef; }
 	.section-heading span { color: var(--color-primary); }
-	.video { display: grid; min-height: clamp(260px, 50vw, 520px); place-content: center; border: 1px solid #e8d5c2; border-radius: var(--radius-lg); background: radial-gradient(circle at 20% 20%, #f7d8a8, transparent 35%), linear-gradient(135deg, #713016, #401204); color: white; text-align: center; box-shadow: var(--shadow-lg); }
+	.video { display: grid; min-height: clamp(260px, 50vw, 520px); margin: 0; place-content: center; border: 1px solid #e8d5c2; border-radius: var(--radius-lg); background: radial-gradient(circle at 20% 20%, #f7d8a8, transparent 35%), linear-gradient(135deg, #713016, #401204); color: white; text-align: center; box-shadow: var(--shadow-lg); }
 	.video strong, .video small { display: block; }
 	.video small { color: rgb(255 255 255 / 60%); }
 	.play { display: grid; width: 76px; height: 76px; margin: 0 auto 1rem; padding-left: 4px; border: 1px solid rgb(255 255 255 / 45%); border-radius: 50%; background: rgb(255 255 255 / 18%); font-size: 1.6rem; place-items: center; backdrop-filter: blur(10px); }

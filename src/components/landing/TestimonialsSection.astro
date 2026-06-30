@@ -3,8 +3,8 @@ import type { LandingContent } from '../../i18n/types';
 interface Props { content: LandingContent['testimonials']; }
 const { content } = Astro.props;
 ---
-<section class="section testimonials"><div class="container"><div class="section-heading"><h2>{content.title}</h2><p>{content.disclaimer}</p></div>
-	<div class="grid">{content.items.map((item) => <figure><div class="stars" aria-label="5 stars">★★★★★</div><blockquote>“{item.quote}”</blockquote><figcaption><strong>{item.role}</strong><small>{item.label}</small></figcaption></figure>)}</div>
+<section class="section testimonials"><div class="container"><header class="section-heading"><h2>{content.title}</h2><p>{content.disclaimer}</p></header>
+	<div class="grid">{content.items.map((item) => <figure><div class="stars" aria-label="5 stars">★★★★★</div><blockquote><p>"{item.quote}"</p></blockquote><figcaption><strong>{item.role}</strong><small>{item.label}</small></figcaption></figure>)}</div>
 </div></section>
 <style>
 	.testimonials { background: #fff8ef; }

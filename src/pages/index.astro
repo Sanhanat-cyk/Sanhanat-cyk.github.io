@@ -5,9 +5,54 @@ import { commonTh } from '../i18n/locales/th/common';
 import { landingTh } from '../i18n/locales/th/landing';
 
 const appUrl = import.meta.env.PUBLIC_APP_URL || '#app';
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://sanhanat-cyk.github.io';
+
 const schema = [
-	{ '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'ChillTax', applicationCategory: 'FinanceApplication', operatingSystem: 'LINE, Web', description: landingTh.seo.description, offers: landingTh.pricing.plans.map((plan) => ({ '@type': 'Offer', name: plan.name, price: plan.price.replace(/[^0-9]/g, '') || '0', priceCurrency: 'THB' })) },
-	{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: landingTh.faq.items.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) },
+	{
+		'@context': 'https://schema.org',
+		'@type': 'SoftwareApplication',
+		name: 'ChillTax',
+		applicationCategory: 'FinanceApplication',
+		operatingSystem: 'LINE, Web',
+		description: landingTh.seo.description,
+		url: siteUrl,
+		offers: landingTh.pricing.plans.map((plan) => ({
+			'@type': 'Offer',
+			name: plan.name,
+			price: plan.price.replace(/[^0-9]/g, '') || '0',
+			priceCurrency: 'THB',
+		})),
+		aggregateRating: undefined,
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: landingTh.faq.items.map((item) => ({
+			'@type': 'Question',
+			name: item.question,
+			acceptedAnswer: { '@type': 'Answer', text: item.answer },
+		})),
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'HowTo',
+		name: landingTh.steps.title,
+		description: landingTh.steps.description,
+		step: landingTh.steps.items.map((item, i) => ({
+			'@type': 'HowToStep',
+			position: i + 1,
+			name: item.title,
+			text: item.description,
+		})),
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Organization',
+		name: 'ChillTax',
+		url: siteUrl,
+		logo: `${siteUrl}/favicon.svg`,
+		description: commonTh.footerDescription,
+	},
 ];
 ---
 <BaseLayout locale="th" seo={landingTh.seo} common={commonTh} canonicalPath="/" alternatePath="/en/" schema={schema}>

@@ -84,3 +84,13 @@ Page (src/pages/*.astro)
 **CardGridSection** — ใช้ 3 ครั้งในหน้า landing:
 - Props: `id?`, `title`, `description`, `items: CardContent[]`, `tone?: 'warm'`, `columns?: 3`
 - Accepts array of `{ icon, title, description }` cards
+
+## Environment Variables
+
+| Variable | Purpose |
+|----------|---------|
+| `PUBLIC_SITE_URL` | Base URL ของเว็บ (sitemap, robots.txt, canonical, JSON-LD) |
+| `PUBLIC_APP_URL` | Product URL สำหรับทุก CTA button |
+| `PUBLIC_LINE_URL` | LINE OA (สำรองไว้ใช้เป็นลิงก์ติดต่อ) |
+| `PUBLIC_GA_MEASUREMENT_ID` | GA4 measurement ID (consent-gated) |
+| `PUBLIC_GOOGLE_SITE_VERIFICATION` | Google Search Console token |

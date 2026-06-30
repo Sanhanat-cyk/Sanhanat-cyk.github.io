@@ -1,8 +1,81 @@
-# SEO Implementation
+# SEO & AI Discoverability
 
-## Overview
+## Goals
 
-SEO ถูก implement ใน `src/layouts/BaseLayout.astro` เป็นหลัก ทุกหน้าใช้ layout เดียวกัน
+- ให้ Google / AI Overview ดึงข้อมูลได้แม่นยำ (FAQPage, HowTo, SoftwareApplication)
+- Semantic HTML ช่วย Generative Engine เข้าใจ hierarchy โดยไม่ต้องเดา
+- ครบทั้ง canonical, hreflang, OG/Twitter, sitemap, robots.txt
+
+## JSON-LD Schema Markup
+
+### Landing Pages (`/`, `/en/`)
+
+มี 4 schemas:
+
+1. **SoftwareApplication** — ข้อมูลแอพ, pricing offers, URL
+2. **FAQPage** — คำถาม-คำตอบทั้งหมด (ดึงจาก `faq.items`)
+3. **HowTo** — ขั้นตอนการเริ่มใช้ (ดึงจาก `steps.items`)
+4. **Organization** — ข้อมูลแบรนด์, logo
+
+```typescript
+// ตัวอย่าง (src/pages/index.astro)
+const schema = [
+  { '@type': 'SoftwareApplication', ... offers, url },
+  { '@type': 'FAQPage', mainEntity: [...questions] },
+  { '@type': 'HowTo', step: [...steps] },
+  { '@type': 'Organization', name, url, logo },
+];
+```
+
+### Legal Pages (`/privacy-policy/`, `/terms-and-conditions/`)
+
+มี 1 schema:
+
+- **WebPage** — ชื่อหน้า, description, inLanguage, dateModified, isPartOf WebSite
+
+```typescript
+const schema = {
+  '@type': 'WebPage',
+  name, description, url, inLanguage, dateModified,
+  isPartOf: { '@type': 'WebSite', name: 'ChillTax', url: siteUrl },
+};
+```
+
+### เพิ่มหน้าใหม่ต้องทำ:
+1. เลือก schema type ที่เหมาะสม (WebPage, Article, FAQPage, HowTo, etc.)
+2. สร้าง schema object ใน page file
+3. ส่งผ่าน `schema` prop ให้ BaseLayout
+
+## Semantic HTML Standards
+
+### ที่ใช้ในโปรเจค:
+
+| Element | ใช้ตรงไหน | หน้าที่ |
+|---------|-----------|---------|
+| `<header>` | BaseLayout (site-header), section headings | Document/section header |
+| `<nav>` | Header | Navigation landmark |
+| `<main>` | BaseLayout | Primary content |
+| `<section>` | ทุก landing section | Thematic grouping |
+| `<article>` | CardGrid, PricingSection | Self-contained content |
+| `<figure>` + `<figcaption>` | DemoSection (video), Testimonials | Media/quote with caption |
+| `<blockquote>` | TestimonialsSection | Quoted content |
+| `<details>` + `<summary>` | FaqSection | Collapsible FAQ items |
+| `<ol>` / `<ul>` | StepsSection, DemoSection | Ordered/unordered lists |
+| `<table>` + `<th scope>` | ComparisonSection | Data table with headers |
+| `<time>` | LegalPage | Machine-readable date |
+| `<footer>` | BaseLayout, DemoSection (closing) | Section/document footer |
+| `<aside>` | CookieBanner | Tangential content (dialog) |
+
+### Rules เมื่อสร้าง component ใหม่:
+
+- ใช้ `<section>` สำหรับ thematic section ที่มี heading
+- ใช้ `<article>` สำหรับ self-contained content (card, plan)
+- ใช้ `<header>` สำหรับ section-heading (แทน `<div class="section-heading">`)
+- ใช้ `<figure>` สำหรับ media content ที่มี caption
+- ใช้ `<time>` สำหรับ date/time values
+- ใช้ `<footer>` สำหรับ closing/CTA areas ใน section
+- เพิ่ม `aria-hidden="true"` สำหรับ decorative elements (icons, shapes)
+- ใช้ `aria-label` สำหรับ non-text landmarks
 
 ## Meta Tags (in BaseLayout)
 
@@ -25,58 +98,33 @@ SEO ถูก implement ใน `src/layouts/BaseLayout.astro` เป็นหล
 
 ```html
 <meta property="og:type" content="website" />
-<meta property="og:locale" content="th_TH" /> <!-- or en_US -->
+<meta property="og:locale" content="th_TH | en_US" />
 <meta property="og:title" content={seo.openGraphTitle} />
 <meta property="og:description" content={seo.openGraphDescription} />
 <meta property="og:image" content="/og-image.svg" />
 <meta name="twitter:card" content="summary_large_image" />
 ```
 
-## Structured Data (JSON-LD)
-
-Landing pages inject 2 schemas via `schema` prop:
-
-1. **SoftwareApplication** — App metadata + pricing offers
-2. **FAQPage** — FAQ questions/answers
-
-```astro
-{schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />}
-```
-
-Schemas are constructed in page files (`src/pages/index.astro`, `src/pages/en/index.astro`).
-
 ## Sitemap
 
-Dynamic endpoint at `src/pages/sitemap.xml.ts`:
-
-```ts
-const pages = ['/', '/privacy-policy/', '/terms-and-conditions/',
-               '/en/', '/en/privacy-policy/', '/en/terms-and-conditions/'];
-```
-
-เมื่อเพิ่มหน้าใหม่ ต้องเพิ่มใน array นี้ด้วย
+Dynamic endpoint at `src/pages/sitemap.xml.ts` — lists all 6 pages.
+อัพเดทเมื่อเพิ่มหน้าใหม่
 
 ## robots.txt
 
-```
-User-agent: *
-Allow: /
-Sitemap: https://sanhanat-cyk.github.io/sitemap.xml
-```
+Dynamic endpoint at `src/pages/robots.txt.ts` — อ่าน site URL จาก env.
 
 ## Google Search Console
 
-```html
-{googleVerification && <meta name="google-site-verification" content={googleVerification} />}
-```
-
-ค่ามาจาก `PUBLIC_GOOGLE_SITE_VERIFICATION` env variable
+Conditional meta tag จาก `PUBLIC_GOOGLE_SITE_VERIFICATION` env variable.
 
 ## Checklist เมื่อเพิ่มหน้าใหม่
 
 1. ✅ เพิ่ม `SeoContent` ใน locale content
-2. ✅ Set canonical URL
-3. ✅ เพิ่ม hreflang alternates (ทั้ง th + en + x-default)
-4. ✅ เพิ่ม OG/Twitter meta
+2. ✅ Set canonical URL via `canonicalPath` prop
+3. ✅ เพิ่ม hreflang alternates (ทั้ง th + en version)
+4. ✅ OG/Twitter meta (auto จาก BaseLayout)
 5. ✅ เพิ่มใน `sitemap.xml.ts`
-6. ✅ เพิ่ม JSON-LD ถ้าเหมาะสม
+6. ✅ เลือก JSON-LD schema type ที่เหมาะสม
+7. ✅ ใช้ semantic HTML tags ที่ถูกต้อง
+8. ✅ เพิ่ม `aria-` attributes สำหรับ accessibility

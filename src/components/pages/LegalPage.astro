@@ -3,7 +3,7 @@ import type { LegalPageContent } from '../../i18n/types';
 interface Props { content: LegalPageContent; }
 const { content } = Astro.props;
 ---
-<article class="legal section"><div class="container"><header><h1>{content.title}</h1><p class="updated">{content.updated}</p><p class="intro">{content.intro}</p></header>
+<article class="legal section"><div class="container"><header><h1>{content.title}</h1><p class="updated"><time>{content.updated}</time></p><p class="intro">{content.intro}</p></header>
 	<div class="content">{content.sections.map((section) => <section><h2>{section.heading}</h2>{section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}{section.items && <ul>{section.items.map((item) => <li>{item}</li>)}</ul>}</section>)}</div>
 </div></article>
 <style>

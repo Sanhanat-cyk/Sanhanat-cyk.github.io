@@ -12,8 +12,9 @@
 
 | Variable | Where to set | Purpose |
 |----------|-------------|---------|
-| `PUBLIC_SITE_URL` | `.env` + GitHub vars | Base URL ของเว็บ (ใช้ใน sitemap, robots.txt, canonical fallback) |
-| `PUBLIC_LINE_URL` | `.env` + GitHub vars | LINE OA deep link สำหรับทุก CTA |
+| `PUBLIC_SITE_URL` | `.env` + GitHub vars | Base URL ของเว็บ (sitemap, robots.txt, canonical, JSON-LD) |
+| `PUBLIC_APP_URL` | `.env` + GitHub vars | Product URL สำหรับทุก CTA button |
+| `PUBLIC_LINE_URL` | `.env` + GitHub vars | LINE OA deep link (สำรองไว้ใช้เป็นลิงก์ติดต่อ) |
 | `PUBLIC_GA_MEASUREMENT_ID` | `.env` + GitHub vars | GA4 measurement ID (consent-gated) |
 | `PUBLIC_GOOGLE_SITE_VERIFICATION` | `.env` + GitHub vars | Google Search Console token |
 

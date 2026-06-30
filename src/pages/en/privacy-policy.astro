@@ -3,7 +3,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import LegalPage from '../../components/pages/LegalPage.astro';
 import { commonEn } from '../../i18n/locales/en/common';
 import { privacyEn } from '../../i18n/locales/en/legal';
+
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://sanhanat-cyk.github.io';
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebPage',
+	name: privacyEn.title,
+	description: privacyEn.seo.description,
+	url: `${siteUrl}/en/privacy-policy/`,
+	inLanguage: 'en-US',
+	isPartOf: { '@type': 'WebSite', name: 'ChillTax', url: siteUrl },
+	dateModified: privacyEn.updated,
+};
 ---
-<BaseLayout locale="en" seo={privacyEn.seo} common={commonEn} canonicalPath="/en/privacy-policy/" alternatePath="/privacy-policy/">
+<BaseLayout locale="en" seo={privacyEn.seo} common={commonEn} canonicalPath="/en/privacy-policy/" alternatePath="/privacy-policy/" schema={schema}>
 	<LegalPage content={privacyEn} />
 </BaseLayout>

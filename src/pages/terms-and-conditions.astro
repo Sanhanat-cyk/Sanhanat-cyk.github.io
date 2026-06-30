@@ -3,7 +3,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import LegalPage from '../components/pages/LegalPage.astro';
 import { commonTh } from '../i18n/locales/th/common';
 import { termsTh } from '../i18n/locales/th/legal';
+
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://sanhanat-cyk.github.io';
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebPage',
+	name: termsTh.title,
+	description: termsTh.seo.description,
+	url: `${siteUrl}/terms-and-conditions/`,
+	inLanguage: 'th-TH',
+	isPartOf: { '@type': 'WebSite', name: 'ChillTax', url: siteUrl },
+	dateModified: termsTh.updated,
+};
 ---
-<BaseLayout locale="th" seo={termsTh.seo} common={commonTh} canonicalPath="/terms-and-conditions/" alternatePath="/en/terms-and-conditions/">
+<BaseLayout locale="th" seo={termsTh.seo} common={commonTh} canonicalPath="/terms-and-conditions/" alternatePath="/en/terms-and-conditions/" schema={schema}>
 	<LegalPage content={termsTh} />
 </BaseLayout>
