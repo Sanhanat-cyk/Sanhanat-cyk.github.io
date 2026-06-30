@@ -10,7 +10,8 @@ const { content } = Astro.props;
 	.faq { background: #fff8ef; }
 	.narrow { max-width: 850px; }
 	.list { display: grid; gap: .7rem; }
-	details { border: 1px solid var(--color-border); border-radius: 16px; background: var(--color-surface); }
+	details { border: 1px solid var(--color-border); border-radius: 16px; background: var(--color-surface); transition: box-shadow .2s ease; }
+	details:hover { box-shadow: 0 8px 24px rgb(106 35 0 / 8%); }
 	summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem 1.25rem; font-weight: 800; cursor: pointer; list-style: none; }
 	summary::-webkit-details-marker { display: none; }
 	summary span { color: var(--color-primary); font-size: 1.5rem; transition: transform .2s ease; }

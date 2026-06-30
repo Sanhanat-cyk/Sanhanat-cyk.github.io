@@ -60,6 +60,7 @@ export interface LandingContent {
 		highlight: string;
 		description: string;
 		videoLabel: string;
+		videoId: string;
 		steps: CardContent[];
 		closing: string;
 		cta: string;

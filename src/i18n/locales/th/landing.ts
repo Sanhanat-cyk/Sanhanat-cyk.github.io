@@ -30,6 +30,7 @@ export const landingTh = {
 		highlight: '60 วินาที',
 		description: 'จากพิมพ์รายได้ จนพร้อมยื่น—ดูทุกขั้นในคลิปเดียว',
 		videoLabel: 'วิดีโอสาธิต · 60 วินาที',
+		videoId: 'HgDP8SUHMms',
 		steps: [
 			{ icon: '1', title: 'พิมพ์รายได้', description: 'คุยกับ Chilly เหมือนแชตเพื่อน' },
 			{ icon: '2', title: 'แยกมาตราให้', description: 'รู้เลยว่าเข้ามาตรา 40 ข้อไหน' },

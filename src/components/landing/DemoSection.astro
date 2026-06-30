@@ -2,28 +2,69 @@
 import type { LandingContent } from '../../i18n/types';
 interface Props { content: LandingContent['demo']; appUrl: string; }
 const { content, appUrl } = Astro.props;
+const posterAlt = `${content.videoLabel} — ChillTax`;
 ---
 <section id="demo" class="section demo">
 	<div class="container">
-		<header class="section-heading"><h2>{content.title} <span>{content.highlight}</span></h2><p>{content.description}</p></header>
-		<figure class="video" aria-label={content.videoLabel}><div class="play" aria-hidden="true">▶</div><figcaption><strong>{content.videoLabel}</strong><small>ChillTax</small></figcaption></figure>
-		<ol class="steps">{content.steps.map((step) => <li><b aria-hidden="true">{step.icon}</b><div><h3>{step.title}</h3><p>{step.description}</p></div></li>)}</ol>
-		<footer class="closing"><p>{content.closing}</p><a class="button button-primary" href={appUrl}>{content.cta}</a></footer>
+		<div class="demo-grid">
+			<figure class="video-figure">
+				<div
+					class="video"
+					data-video-facade
+					data-video-id={content.videoId}
+					data-video-title={posterAlt}
+					role="button"
+					tabindex="0"
+					aria-label={posterAlt}
+				>
+					<div class="play" aria-hidden="true">▶</div>
+					<div class="poster-label"><strong>{content.videoLabel}</strong><small>ChillTax</small></div>
+				</div>
+				<figcaption class="sr-only">{posterAlt}</figcaption>
+			</figure>
+			<div class="demo-content">
+				<h2>{content.title} <span>{content.highlight}</span></h2>
+				<p class="desc">{content.description}</p>
+				<ol class="steps">{content.steps.map((step) => <li><b aria-hidden="true">{step.icon}</b><div><h3>{step.title}</h3><p>{step.description}</p></div></li>)}</ol>
+				<a class="button button-primary" href={appUrl}>{content.cta}</a>
+			</div>
+		</div>
 	</div>
 </section>
+<script>
+	import '../../scripts/video-facade';
+</script>
 <style>
 	.demo { background: #fff8ef; }
-	.section-heading span { color: var(--color-primary); }
-	.video { display: grid; min-height: clamp(260px, 50vw, 520px); margin: 0; place-content: center; border: 1px solid #e8d5c2; border-radius: var(--radius-lg); background: radial-gradient(circle at 20% 20%, #f7d8a8, transparent 35%), linear-gradient(135deg, #713016, #401204); color: white; text-align: center; box-shadow: var(--shadow-lg); }
-	.video strong, .video small { display: block; }
-	.video small { color: rgb(255 255 255 / 60%); }
-	.play { display: grid; width: 76px; height: 76px; margin: 0 auto 1rem; padding-left: 4px; border: 1px solid rgb(255 255 255 / 45%); border-radius: 50%; background: rgb(255 255 255 / 18%); font-size: 1.6rem; place-items: center; }
-	.steps { display: grid; gap: 1rem; padding: 0; margin: 2rem 0 0; list-style: none; }
-	.steps li { display: flex; align-items: center; gap: 1rem; padding: 1rem; }
-	.steps b { display: grid; width: 42px; height: 42px; flex: none; border-radius: 50%; background: #f0b15e; color: #6a2300; place-items: center; }
-	.steps h3 { margin: 0; font-size: 1rem; }
-	.steps p { margin: .1rem 0 0; color: var(--color-muted); font-size: .88rem; }
-	.closing { padding-top: 2rem; text-align: center; }
-	.closing p { font-size: 1.15rem; font-weight: 800; }
-	@media (min-width: 700px) { .steps { grid-template-columns: repeat(4, 1fr); } .steps li { display: block; text-align: center; } .steps b { margin: 0 auto .75rem; } }
+	.demo-grid { display: grid; gap: 2rem; align-items: center; }
+
+	/* ── Video ── */
+	.video-figure { margin: 0; }
+	.video { position: relative; display: grid; width: 100%; max-width: 340px; margin-inline: auto; aspect-ratio: 9 / 12; place-content: center; border: 1px solid #e8d5c2; border-radius: var(--radius-lg); background: radial-gradient(circle at 20% 20%, #f7d8a8, transparent 35%), linear-gradient(135deg, #713016, #401204); color: white; text-align: center; box-shadow: var(--shadow-lg); cursor: pointer; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease; }
+	.video:hover, .video:focus-visible { transform: translateY(-4px) scale(1.02); box-shadow: 0 30px 80px rgb(106 35 0 / 22%); }
+	.poster-label strong, .poster-label small { display: block; }
+	.poster-label small { color: rgb(255 255 255 / 60%); }
+	.play { display: grid; width: 76px; height: 76px; margin: 0 auto 1rem; padding-left: 4px; border: 1px solid rgb(255 255 255 / 45%); border-radius: 50%; background: rgb(255 255 255 / 18%); font-size: 1.6rem; place-items: center; transition: transform .2s ease, background .2s ease; }
+	.video:hover .play { transform: scale(1.15); background: rgb(255 255 255 / 30%); }
+	.video :global(.video-frame) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: var(--radius-lg); }
+
+	/* ── Content (heading + steps + CTA all together) ── */
+	.demo-content { text-align: center; }
+	h2 { margin-bottom: .5rem; font-size: clamp(1.8rem, 4.5vw, 3rem); line-height: 1.12; letter-spacing: -.03em; }
+	h2 span { color: var(--color-primary); }
+	.desc { margin-bottom: 1.5rem; color: var(--color-muted); font-size: clamp(1rem, 2vw, 1.1rem); }
+	.steps { display: grid; gap: .6rem; padding: 0; margin: 0 0 1.5rem; list-style: none; }
+	.steps li { display: flex; align-items: center; gap: .85rem; padding: .7rem .85rem; border-radius: var(--radius-md); transition: background .2s ease; }
+	.steps li:hover { background: rgb(212 123 35 / 6%); }
+	.steps b { display: grid; width: 36px; height: 36px; flex: none; border-radius: 50%; background: #f0b15e; color: #6a2300; font-size: .9rem; font-weight: 800; place-items: center; transition: transform .2s ease; }
+	.steps li:hover b { transform: scale(1.1); }
+	.steps h3 { margin: 0; font-size: .95rem; }
+	.steps p { margin: .1rem 0 0; color: var(--color-muted); font-size: .82rem; }
+
+	/* ── Desktop: video left (big), all content right ── */
+	@media (min-width: 860px) {
+		.demo-grid { grid-template-columns: 1fr .7fr; gap: 3.5rem; }
+		.video { max-width: 100%; }
+		.demo-content { text-align: left; }
+	}
 </style>

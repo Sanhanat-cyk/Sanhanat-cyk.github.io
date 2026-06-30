@@ -5,17 +5,35 @@ const { content, appUrl } = Astro.props;
 ---
 <section class="section comparison"><div class="container"><div class="section-heading"><h2>{content.title}</h2><p>{content.description}</p></div>
 	<div class="table-wrap"><table><thead><tr><th scope="col"></th>{content.columns.map((column, i) => <th scope="col" class:list={{ chilltax: i === 0 }}>{column}</th>)}</tr></thead>
-	<tbody>{content.rows.map((row) => <tr><th scope="row">{row.feature}</th>{row.values.map((value, i) => <td class:list={{ chilltax: i === 0 }}>{value}</td>)}</tr>)}</tbody></table></div>
+	<tbody>{content.rows.map((row) => <tr><th scope="row">{row.feature}</th>{row.values.map((value, i) => <td class:list={{ chilltax: i === 0 }} data-label={content.columns[i]}>{value}</td>)}</tr>)}</tbody></table></div>
 	<div class="closing"><p>{content.closing}</p><a class="button button-primary" href={appUrl}>{content.cta}</a></div>
 </div></section>
 <style>
 	.comparison { background: #3d1400; color: white; }
 	.comparison :global(.section-heading p) { color: rgb(255 255 255 / 65%); }
-	.table-wrap { overflow-x: auto; border: 1px solid rgb(255 255 255 / 14%); border-radius: 20px; }
-	table { width: 100%; min-width: 740px; border-collapse: collapse; background: rgb(255 255 255 / 5%); }
+	.table-wrap { border: 1px solid rgb(255 255 255 / 14%); border-radius: 20px; }
+	table { width: 100%; border-collapse: collapse; background: rgb(255 255 255 / 5%); }
 	th, td { padding: 1rem; border-bottom: 1px solid rgb(255 255 255 / 12%); text-align: center; }
 	tbody th { width: 30%; text-align: left; }
 	.chilltax { background: rgb(224 148 61 / 16%); color: #ffd69d; font-weight: 900; }
 	.closing { padding-top: 2rem; text-align: center; }
 	.closing p { font-size: 1.1rem; font-weight: 800; }
+
+	/* ── Desktop / tablet: classic table with horizontal scroll fallback ── */
+	@media (min-width: 760px) {
+		.table-wrap { overflow-x: auto; }
+		table { min-width: 740px; }
+	}
+
+	/* ── Mobile: stack each row as a readable card ── */
+	@media (max-width: 759px) {
+		thead { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+		table, tbody, tr, th, td { display: block; }
+		tr { padding: .5rem .25rem; border: 1px solid rgb(255 255 255 / 14%); border-radius: 16px; margin-bottom: 1rem; background: rgb(255 255 255 / 4%); }
+		tbody th { width: auto; padding: .75rem 1rem .25rem; font-size: 1.05rem; }
+		td { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .55rem 1rem; border-bottom: 1px solid rgb(255 255 255 / 8%); text-align: right; }
+		td:last-child { border-bottom: 0; }
+		td::before { content: attr(data-label); color: rgb(255 255 255 / 60%); font-size: .85rem; font-weight: 700; text-align: left; }
+		td.chilltax { border-radius: 10px; }
+	}
 </style>

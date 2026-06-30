@@ -28,6 +28,7 @@ export const landingEn = {
 		highlight: '60 seconds',
 		description: 'From recording your first payment to a filing-ready summary.',
 		videoLabel: 'Product demo · 60 seconds',
+		videoId: 'HgDP8SUHMms',
 		steps: [
 			{ icon: '1', title: 'Record income', description: 'Chat with Chilly like a friend' },
 			{ icon: '2', title: 'Classify it', description: 'See which Section 40 category applies' },
