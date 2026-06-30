@@ -3,7 +3,7 @@ import type { CommonContent } from '../../i18n/types';
 interface Props { content: CommonContent['cookie']; privacyPath: string; }
 const { content, privacyPath } = Astro.props;
 ---
-<aside class="cookie" role="dialog" aria-live="polite" aria-label={content.title} data-cookie-banner hidden>
+<aside class="cookie" role="region" aria-label={content.title} data-cookie-banner hidden>
 	<div><strong>{content.title}</strong><p>{content.description} <a href={privacyPath}>{content.privacyLink}</a></p></div>
 	<div class="actions"><button type="button" class="button button-secondary" data-cookie-reject>{content.reject}</button><button type="button" class="button button-primary" data-cookie-accept>{content.accept}</button></div>
 </aside>

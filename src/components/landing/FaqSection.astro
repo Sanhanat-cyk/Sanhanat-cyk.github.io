@@ -4,7 +4,7 @@ interface Props { content: LandingContent['faq']; }
 const { content } = Astro.props;
 ---
 <section class="section faq"><div class="container narrow"><header class="section-heading"><h2>{content.title}</h2></header>
-	<div class="list" role="list">{content.items.map((item, index) => <details open={index === 0}><summary>{item.question}<span aria-hidden="true">+</span></summary><p>{item.answer}</p></details>)}</div>
+	<div class="list">{content.items.map((item, index) => <details open={index === 0}><summary>{item.question}<span aria-hidden="true">+</span></summary><p>{item.answer}</p></details>)}</div>
 </div></section>
 <style>
 	.faq { background: #fff8ef; }

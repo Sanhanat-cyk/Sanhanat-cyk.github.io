@@ -35,20 +35,20 @@ const { content, appUrl } = Astro.props;
 	.trust li { display: flex; align-items: center; gap: .35rem; }
 	.trust span { color: var(--color-green); font-weight: 900; }
 	.chat-wrap { position: relative; width: min(100%, 430px); margin-inline: auto; }
-	.chat-card { position: relative; z-index: 2; overflow: hidden; border: 1px solid var(--color-border); border-radius: 28px; background: var(--color-surface); box-shadow: var(--shadow-lg); transform: rotate(1.5deg); }
-	.chat-head { display: flex; align-items: center; gap: .8rem; padding: 1rem 1.2rem; background: #5b1e05; color: white; }
+	.chat-card { position: relative; z-index: 2; overflow: hidden; border: 1px solid var(--color-border); border-radius: 28px; background: var(--color-surface); box-shadow: 0 16px 40px rgb(106 35 0 / 12%); transform: rotate(1.5deg); }
+	.chat-head { display: flex; align-items: center; gap: .8rem; padding: 1rem 1.2rem; background: #3d1400; color: white; }
 	.avatar { display: grid; width: 44px; height: 44px; border-radius: 50%; background: #fff3df; place-items: center; }
 	.chat-head strong, .chat-head small { display: block; }
 	.chat-head small { color: rgb(255 255 255 / 70%); font-size: .75rem; }
 	.chat-head i { display: inline-block; width: 7px; height: 7px; margin-right: .3rem; border-radius: 50%; background: var(--color-green); }
-	.messages { min-height: 310px; padding: 1.5rem 1rem; background: #f1e8df; }
+	.messages { min-height: 240px; padding: 1.5rem 1rem; background: #f1e8df; }
 	.messages p { margin: 0; }
 	.user { width: fit-content; max-width: 80%; margin-left: auto !important; padding: .75rem 1rem; border-radius: 17px 17px 3px 17px; background: var(--color-green); color: white; }
 	.reply { width: fit-content; max-width: 90%; margin-top: 1rem; padding: 1rem; border-radius: 17px 17px 17px 3px; background: white; box-shadow: 0 5px 18px rgb(106 35 0 / 7%); }
 	.reply p + p { margin-top: .25rem; color: var(--color-muted); }
-	.chat-input { display: flex; align-items: center; justify-content: space-between; padding: 1rem; color: #a48875; font-size: .88rem; }
+	.chat-input { display: flex; align-items: center; justify-content: space-between; padding: 1rem; color: #7a6455; font-size: .88rem; }
 	.chat-input b { display: grid; width: 34px; height: 34px; border-radius: 50%; background: var(--color-green); color: white; place-items: center; }
-	.shape { position: absolute; border-radius: 50%; filter: blur(1px); }
+	.shape { position: absolute; border-radius: 50%; opacity: .6; }
 	.shape-one { width: 190px; height: 190px; top: -40px; right: -70px; background: #efd09a; }
 	.shape-two { width: 140px; height: 140px; bottom: -35px; left: -45px; background: #d7e4b8; }
 	@media (min-width: 860px) { .hero-grid { grid-template-columns: 1.08fr .92fr; } .copy { text-align: left; } .description { margin-left: 0; } .actions, .trust { justify-content: flex-start; } }
